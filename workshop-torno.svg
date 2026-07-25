@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#EAE0CB"/>
+  <path d="M200,250 L400,250 L400,420 L200,420 Z" fill="none" stroke="#A5472A" stroke-width="6" stroke-linecap="round"/>
+  <text x="24" y="376" font-family="monospace" font-size="13" fill="#2B241B" opacity="0.4">workshop vidragem</text>
+</svg>

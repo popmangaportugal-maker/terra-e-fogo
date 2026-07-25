@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <rect width="600" height="750" fill="#EAE0CB"/>
+  <g opacity="0.92">
+    <path d="M260,120 C230,120 220,160 225,200 C230,260 200,320 200,400 C200,520 220,600 300,600 C380,600 400,520 400,400 C400,320 370,260 375,200 C380,160 370,120 340,120 Z" fill="#A5472A"/>
+  </g>
+  <text x="30" y="720" font-family="monospace" font-size="14" fill="#2B241B" opacity="0.4">vaso alto</text>
+</svg>

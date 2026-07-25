@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <rect width="600" height="750" fill="#EAE0CB"/>
+  <g opacity="0.92">
+    <path d="M180,320 C180,420 230,520 300,520 C370,520 420,420 420,320 C420,300 400,290 300,290 C200,290 180,300 180,320 Z M240,290 L230,240 L370,240 L360,290 Z" fill="#4F6E52"/>
+  </g>
+  <text x="30" y="720" font-family="monospace" font-size="14" fill="#2B241B" opacity="0.4">taca celadao</text>
+</svg>

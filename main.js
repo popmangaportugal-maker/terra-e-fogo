@@ -1,0 +1,108 @@
+{
+  "items": [
+    {
+      "id": "vaso-alto-01",
+      "nome": "Vaso Alto — Óxido",
+      "categoria": "vasos",
+      "preco": 68.0,
+      "stock": 3,
+      "img": "assets/vaso-alto.svg",
+      "altura": "34 cm",
+      "diametro": "14 cm",
+      "vidrado": "Óxido de ferro",
+      "forno": "1280°C — redução",
+      "descricao": "Vaso de corpo alongado, torneado em grés, com vidrado de óxido de ferro que escurece nas arestas durante a cozedura em redução."
+    },
+    {
+      "id": "taca-celadao-01",
+      "nome": "Taça Celadão",
+      "categoria": "tacas",
+      "preco": 32.0,
+      "stock": 5,
+      "img": "assets/taca-celadao.svg",
+      "altura": "9 cm",
+      "diametro": "16 cm",
+      "vidrado": "Celadão",
+      "forno": "1260°C — redução",
+      "descricao": "Taça de parede fina com vidrado celadão que acentua as marcas do torno, deixadas propositadamente visíveis."
+    },
+    {
+      "id": "caneca-barro-01",
+      "nome": "Caneca de Barro",
+      "categoria": "canecas",
+      "preco": 24.0,
+      "stock": 8,
+      "img": "assets/caneca-barro.svg",
+      "altura": "11 cm",
+      "diametro": "8 cm",
+      "vidrado": "Óxido de ferro, interior claro",
+      "forno": "1260°C — oxidação",
+      "descricao": "Caneca diária, pega larga desenhada para a mão fechar por completo. Interior em vidrado claro para melhor visualizar a bebida."
+    },
+    {
+      "id": "jarro-verde-01",
+      "nome": "Jarro Verde-Celadão",
+      "categoria": "vasos",
+      "preco": 54.0,
+      "stock": 4,
+      "img": "assets/jarro-verde.svg",
+      "altura": "24 cm",
+      "diametro": "16 cm",
+      "vidrado": "Celadão",
+      "forno": "1260°C — redução",
+      "descricao": "Jarro de bico largo, pensado tanto para água como para flores de haste curta."
+    },
+    {
+      "id": "prato-terra-01",
+      "nome": "Prato Terra",
+      "categoria": "pratos",
+      "preco": 29.0,
+      "stock": 10,
+      "img": "assets/prato-terra.svg",
+      "altura": "3 cm",
+      "diametro": "27 cm",
+      "vidrado": "Óxido de ferro",
+      "forno": "1280°C — redução",
+      "descricao": "Prato raso de aba estreita, base sem vidrado para contacto direto com a mesa."
+    },
+    {
+      "id": "vaso-planta-01",
+      "nome": "Vaso para Planta",
+      "categoria": "vasos",
+      "preco": 42.0,
+      "stock": 6,
+      "img": "assets/vaso-planta.svg",
+      "altura": "18 cm",
+      "diametro": "18 cm",
+      "vidrado": "Celadão, exterior em cru",
+      "forno": "1260°C — redução",
+      "descricao": "Vaso cilíndrico com furo de drenagem e prato solto incluído."
+    },
+    {
+      "id": "bule-cha-01",
+      "nome": "Bule de Chá",
+      "categoria": "cha",
+      "preco": 78.0,
+      "stock": 2,
+      "img": "assets/bule-cha.svg",
+      "altura": "13 cm",
+      "diametro": "16 cm",
+      "vidrado": "Óxido de ferro",
+      "forno": "1280°C — redução",
+      "descricao": "Bule com filtro integrado torneado numa só peça, bico testado gota-a-gota."
+    },
+    {
+      "id": "chawan-01",
+      "nome": "Chawan",
+      "categoria": "cha",
+      "preco": 46.0,
+      "stock": 4,
+      "img": "assets/chawan.svg",
+      "altura": "8 cm",
+      "diametro": "13 cm",
+      "vidrado": "Celadão",
+      "forno": "1260°C — redução",
+      "descricao": "Taça para chá matcha, parede espessa para reter o calor, base amassada à mão."
+    }
+  ]
+}

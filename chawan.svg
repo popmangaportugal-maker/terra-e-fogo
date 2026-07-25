@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <rect width="600" height="750" fill="#EAE0CB"/>
+  <g opacity="0.92">
+    <path d="M120,380 C120,460 200,500 300,500 C400,500 480,460 480,380 C480,360 400,350 300,350 C200,350 120,360 120,380 Z" fill="#A5472A"/>
+  </g>
+  <text x="30" y="720" font-family="monospace" font-size="14" fill="#2B241B" opacity="0.4">prato terra</text>
+</svg>
