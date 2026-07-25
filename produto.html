@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout — Terra & Fogo</title>
+<title id="page-title">Peça — Terra & Fogo</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
   <div class="wrap">
     <a href="index.html" class="logo"><span class="ring"></span> Terra &amp; Fogo</a>
     <nav class="main-nav">
-      <a href="loja.html">Loja</a>
+      <a href="loja.html" class="active">Loja</a>
       <a href="workshops.html">Workshops</a>
       <a href="videos.html">Vídeos</a>
       <a href="noticias.html">Anúncios</a>
@@ -20,51 +20,27 @@
     </nav>
     <div class="header-actions">
       <a href="carrinho.html" class="cart-link">Carrinho <span data-cart-count style="display:none">0</span></a>
+      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
     </div>
   </div>
 </header>
 
-<section>
-  <div class="wrap two-col" style="align-items:flex-start;">
-    <div>
-      <span class="eyebrow">Checkout</span>
-      <h1 style="font-size:clamp(28px,3.4vw,38px); margin:12px 0 30px;">Dados de entrega</h1>
-      <form id="checkout-form" style="display:flex; flex-direction:column; gap:16px;">
-        <input required name="nome" placeholder="Nome completo" style="field-input">
-        <input required type="email" name="email" placeholder="Email">
-        <input required name="morada" placeholder="Morada">
-        <div style="display:flex; gap:16px;">
-          <input required name="cidade" placeholder="Cidade" style="flex:1;">
-          <input required name="cp" placeholder="Código-postal" style="flex:1;">
-        </div>
-        <input required name="telefone" placeholder="Telefone">
-        <button type="submit" class="btn btn-primary btn-block" id="pay-btn" style="margin-top:10px;">Pagar com cartão</button>
-        <p id="checkout-note" style="font-size:13px; color:var(--biscuit-dim); font-family:var(--mono);"></p>
-      </form>
-    </div>
-    <div>
-      <div class="ring-divider">resumo da encomenda</div>
-      <div id="summary"></div>
-    </div>
+<section style="padding-bottom:0;">
+  <div class="wrap">
+    <a href="loja.html" style="font-family:var(--mono); font-size:13px; color:var(--biscuit-dim);">&larr; voltar à loja</a>
   </div>
 </section>
+
+<section id="product-section"></section>
 
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
       <span>© <span data-year></span> Terra &amp; Fogo</span>
-      <span>Pagamento processado de forma segura via Stripe.</span>
+      <span>Todas as peças são feitas à mão — pequenas variações fazem parte do processo.</span>
     </div>
   </div>
 </footer>
-
-<style>
-  #checkout-form input {
-    background: var(--tenmoku-2); border: 1px solid var(--tenmoku-3); color: var(--biscuit);
-    padding: 13px 16px; border-radius: 3px; font-family: var(--sans); font-size: 15px;
-  }
-  #checkout-form input:focus { outline: none; border-color: var(--celadao); }
-</style>
 
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
@@ -72,56 +48,50 @@
 <script>
 (async function () {
   await loadProducts();
-  const lines = cartLines();
-  const summary = document.getElementById("summary");
-  if (lines.length === 0) {
-    summary.innerHTML = `<p class="lede">O carrinho está vazio.</p><a href="loja.html" class="btn btn-outline">Ver peças</a>`;
-    document.getElementById("pay-btn").disabled = true;
-  } else {
-    summary.innerHTML = `
-      <div style="border-top:1px solid var(--linha);">
-        ${lines.map(l => `
-          <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--linha); font-size:14px;">
-            <span>${l.product.nome} <span style="color:var(--biscuit-dim);">× ${l.qty}</span></span>
-            <span class="price">${formatEUR(l.product.preco * l.qty)}</span>
-          </div>
-        `).join("")}
-      </div>
-      <div style="display:flex; justify-content:space-between; padding-top:18px; font-family:var(--mono); font-size:17px;">
-        <span>Total</span><span class="price">${formatEUR(cartTotal())}</span>
+  const id = new URLSearchParams(location.search).get("id");
+  const p = getProduct(id);
+  const section = document.getElementById("product-section");
+
+  if (!p) {
+    section.innerHTML = `
+      <div class="wrap center" style="padding:60px 0;">
+        <h2>Peça não encontrada</h2>
+        <p class="lede" style="margin:16px auto;">Esta peça pode já ter sido vendida — cada uma é única.</p>
+        <a href="loja.html" class="btn btn-primary">Ver outras peças</a>
       </div>`;
+  } else {
+    document.getElementById("page-title").textContent = p.nome + " — Terra & Fogo";
+    section.innerHTML = `
+      <div class="wrap two-col">
+        <div class="card-media" style="border-radius:3px; border:1px solid var(--tenmoku-3);">
+          <img src="${p.img}" alt="${p.nome}">
+        </div>
+        <div>
+          <span class="eyebrow">${CATS_LABEL(p.categoria)}</span>
+          <h1 style="font-size:clamp(30px,3.6vw,44px); margin:14px 0 16px;">${p.nome}</h1>
+          <p class="lede">${p.descricao}</p>
+          <div class="price" style="font-size:26px; margin:24px 0;">${formatEUR(p.preco)}</div>
+          <div style="display:flex; gap:12px; align-items:center; margin-bottom:28px;">
+            <button class="btn btn-primary" id="add-btn">Adicionar ao carrinho</button>
+            <a href="carrinho.html" class="btn btn-outline">Ver carrinho</a>
+          </div>
+          <div class="ring-divider">ficha técnica</div>
+          <div style="font-family:var(--mono); font-size:14px; color:var(--biscuit-dim); display:grid; grid-template-columns:1fr 1fr; gap:10px 20px;">
+            <span>Altura <b style="color:var(--biscuit);">${p.altura}</b></span>
+            <span>Diâmetro <b style="color:var(--biscuit);">${p.diametro}</b></span>
+            <span>Vidrado <b style="color:var(--biscuit);">${p.vidrado}</b></span>
+            <span>Cozedura <b style="color:var(--biscuit);">${p.forno}</b></span>
+            <span>Disponíveis <b style="color:var(--biscuit);">${p.stock}</b></span>
+          </div>
+        </div>
+      </div>`;
+    document.getElementById("add-btn").addEventListener("click", () => addToCart(p.id));
   }
 
-  document.getElementById("checkout-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById("pay-btn");
-    const note = document.getElementById("checkout-note");
-    btn.disabled = true;
-    btn.textContent = "A processar…";
-    const formData = Object.fromEntries(new FormData(e.target));
-
-    try {
-      const res = await fetch("/api/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: lines.map(l => ({ id: l.product.id, nome: l.product.nome, preco: l.product.preco, qty: l.qty })),
-          customer: formData
-        })
-      });
-      if (!res.ok) throw new Error("checkout indisponível");
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
-      throw new Error("sem url de checkout");
-    } catch (err) {
-      note.textContent = "Pagamento ainda não está ligado neste ambiente — ver /api/README.md para ativar o Stripe.";
-      btn.disabled = false;
-      btn.textContent = "Pagar com cartão";
-    }
-  });
+  function CATS_LABEL(cat) {
+    const map = { vasos: "Vasos", tacas: "Taças", canecas: "Canecas", pratos: "Pratos", cha: "Chá" };
+    return map[cat] || cat;
+  }
 })();
 </script>
 </body>

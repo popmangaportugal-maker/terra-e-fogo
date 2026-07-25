@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anúncios — Terra & Fogo</title>
+<title>Workshops — Terra & Fogo</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
     <a href="index.html" class="logo"><span class="ring"></span> Terra &amp; Fogo</a>
     <nav class="main-nav">
       <a href="loja.html">Loja</a>
-      <a href="workshops.html">Workshops</a>
+      <a href="workshops.html" class="active">Workshops</a>
       <a href="videos.html">Vídeos</a>
-      <a href="noticias.html" class="active">Anúncios</a>
+      <a href="noticias.html">Anúncios</a>
       <a href="contacto.html">Contacto</a>
     </nav>
     <div class="header-actions">
@@ -27,20 +27,43 @@
 
 <section style="padding-bottom:0;">
   <div class="wrap">
-    <span class="eyebrow">Novidades do atelier</span>
-    <h1 style="font-size:clamp(32px,4vw,48px); margin:12px 0 8px;">Anúncios</h1>
-    <p class="lede">Fornadas novas, vagas em workshops e outras novidades — substitui pelo conteúdo real à medida que for saindo.</p>
+    <span class="eyebrow">Aprender no atelier</span>
+    <h1 style="font-size:clamp(32px,4vw,48px); margin:12px 0 8px;">Workshops</h1>
+    <p class="lede">Turmas pequenas, torno individual por pessoa. Todo o material está incluído — só precisas de roupa que possa sujar-se de barro.</p>
   </div>
 </section>
 
 <section>
-  <div class="wrap" id="news-list" style="display:flex; flex-direction:column; gap:0; max-width:820px;"></div>
+  <div class="wrap">
+    <div class="grid" id="workshop-grid"></div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--linha);">
+  <div class="wrap">
+    <div class="ring-divider">perguntas frequentes</div>
+    <div style="display:flex; flex-direction:column; gap:0; max-width:760px;">
+      <details style="padding:20px 0; border-bottom:1px solid var(--linha);">
+        <summary style="cursor:pointer; font-family:var(--serif); font-size:18px;">Preciso de experiência prévia?</summary>
+        <p style="color:var(--biscuit-dim); margin-top:12px;">Não, a Iniciação ao Torno é pensada para quem nunca tocou num torno de oleiro.</p>
+      </details>
+      <details style="padding:20px 0; border-bottom:1px solid var(--linha);">
+        <summary style="cursor:pointer; font-family:var(--serif); font-size:18px;">Levo as peças no próprio dia?</summary>
+        <p style="color:var(--biscuit-dim); margin-top:12px;">Não — as peças precisam de secar e ir a duas cozeduras. Combinamos o levantamento 3 a 4 semanas depois.</p>
+      </details>
+      <details style="padding:20px 0; border-bottom:1px solid var(--linha);">
+        <summary style="cursor:pointer; font-family:var(--serif); font-size:18px;">Posso oferecer um workshop?</summary>
+        <p style="color:var(--biscuit-dim); margin-top:12px;">Sim, contacta-nos e enviamos um vale prenda com validade de 6 meses.</p>
+      </details>
+    </div>
+  </div>
 </section>
 
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
       <span>© <span data-year></span> Terra &amp; Fogo</span>
+      <span>Workshops sujeitos a marcação prévia — lugares limitados.</span>
     </div>
   </div>
 </footer>
@@ -49,17 +72,21 @@
 <script src="js/main.js"></script>
 <script>
 (async function () {
-  const res = await fetch("content/noticias.json");
-  const NEWS = (await res.json()).items;
-  document.getElementById("news-list").innerHTML = NEWS.map(n => `
-    <article style="padding:28px 0; border-bottom:1px solid var(--linha); display:grid; grid-template-columns:140px 1fr; gap:24px;">
-      <div style="font-family:var(--mono); font-size:12px; color:var(--biscuit-dim); padding-top:4px;">${n.data}</div>
-      <div>
-        <span class="pill">${n.pill}</span>
-        <h3 class="card-title" style="margin:10px 0 8px;">${n.titulo}</h3>
-        <p style="color:var(--biscuit-dim); margin:0; max-width:60ch;">${n.texto}</p>
+  const res = await fetch("content/workshops.json");
+  const WORKSHOPS = (await res.json()).items;
+  document.getElementById("workshop-grid").innerHTML = WORKSHOPS.map(w => `
+    <div class="card">
+      <div class="card-media"><img src="${w.img}" alt="${w.nome}"></div>
+      <div class="card-body">
+        <h3 class="card-title">${w.nome}</h3>
+        <p style="color:var(--biscuit-dim); font-size:14px; margin:0;">${w.desc}</p>
+        <div class="spec-line"><span>${w.duracao}</span></div>
+        <div class="price-row">
+          <span class="price">${w.preco}</span>
+          <a href="contacto.html" class="btn btn-outline">Marcar</a>
+        </div>
       </div>
-    </article>
+    </div>
   `).join("");
 })();
 </script>

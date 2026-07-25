@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "nome": "Iniciação ao Torno",
+      "img": "assets/workshop-torno.svg",
+      "duracao": "3h · sábados",
+      "preco": "45€",
+      "desc": "Primeiro contacto com o torno: centrar o barro e abrir a primeira peça."
+    },
+    {
+      "nome": "Vidragem & Cor",
+      "img": "assets/workshop-vidragem.svg",
+      "duracao": "3h · domingos",
+      "preco": "55€",
+      "desc": "Como os óxidos e a atmosfera do forno mudam a cor final de uma peça."
+    },
+    {
+      "nome": "Torno Avançado",
+      "img": "assets/workshop-esmalte.svg",
+      "duracao": "4 sessões · 3h cada",
+      "preco": "160€",
+      "desc": "Para quem já centra o barro e quer refinar forma e regularidade de parede."
+    },
+    {
+      "nome": "Workshop em Grupo / Empresas",
+      "img": "assets/video-workshop.svg",
+      "duracao": "2h · a combinar",
+      "preco": "sob consulta",
+      "desc": "Sessão de team-building à volta do torno, para grupos de 6 a 12 pessoas."
+    }
+  ]
+}

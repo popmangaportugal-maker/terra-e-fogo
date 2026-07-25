@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <rect width="600" height="750" fill="#EAE0CB"/>
+  <g opacity="0.92">
+    <path d="M170,340 C170,430 220,500 300,500 C380,500 430,430 430,340 C430,320 410,310 300,310 C190,310 170,320 170,340 Z" fill="#4F6E52"/>
+  </g>
+  <text x="30" y="720" font-family="monospace" font-size="14" fill="#2B241B" opacity="0.4">chawan</text>
+</svg>

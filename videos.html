@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loja — Terra & Fogo</title>
+<title>Vídeos — Terra & Fogo</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,9 +12,9 @@
   <div class="wrap">
     <a href="index.html" class="logo"><span class="ring"></span> Terra &amp; Fogo</a>
     <nav class="main-nav">
-      <a href="loja.html" class="active">Loja</a>
+      <a href="loja.html">Loja</a>
       <a href="workshops.html">Workshops</a>
-      <a href="videos.html">Vídeos</a>
+      <a href="videos.html" class="active">Vídeos</a>
       <a href="noticias.html">Anúncios</a>
       <a href="contacto.html">Contacto</a>
     </nav>
@@ -25,83 +25,84 @@
   </div>
 </header>
 
-<section style="padding-top:56px; padding-bottom:0;">
+<section style="padding-bottom:0;">
   <div class="wrap">
-    <span class="eyebrow">Loja</span>
-    <h1 style="font-size:clamp(32px,4vw,48px); margin:12px 0 8px;">Peças disponíveis</h1>
-    <p class="lede">Cada peça é única — a fotografia é indicativa e pequenas variações de tom e forma fazem parte do processo.</p>
+    <span class="eyebrow">Ver e ouvir</span>
+    <h1 style="font-size:clamp(32px,4vw,48px); margin:12px 0 8px;">Vídeos</h1>
+    <p class="lede">Apresentação do atelier, técnica ao torno e registos dos workshops. Substitui os placeholders pelos teus próprios vídeos quando estiverem prontos.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="filters" id="filters" style="margin-bottom:36px;"></div>
-    <div class="grid" id="shop-grid"></div>
+    <div class="grid" style="grid-template-columns: 1fr;">
+      <div class="card" style="flex-direction:row; align-items:stretch;">
+        <div style="width:45%; flex-shrink:0;">
+          <video controls poster="assets/video-apresentacao.svg" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="card-body" style="justify-content:center;">
+          <span class="eyebrow">Apresentação</span>
+          <h3 class="card-title" style="font-size:24px;">Conhecer o atelier</h3>
+          <p style="color:var(--biscuit-dim);">Um vídeo curto sobre o espaço, o processo e quem está por trás de cada peça.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--linha);">
+  <div class="wrap">
+    <div class="ring-divider">técnica &amp; workshops</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-media">
+          <video controls poster="assets/video-tecnica.svg" style="width:100%; height:100%; object-fit:cover;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Centrar o barro</h3>
+          <p style="color:var(--biscuit-dim); font-size:14px;">O primeiro passo — e o mais difícil — de qualquer peça ao torno.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media">
+          <video controls poster="assets/video-workshop.svg" style="width:100%; height:100%; object-fit:cover;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Um dia de workshop</h3>
+          <p style="color:var(--biscuit-dim); font-size:14px;">Registo de uma turma de Iniciação ao Torno, do início ao fim.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media">
+          <video controls poster="assets/video-tecnica.svg" style="width:100%; height:100%; object-fit:cover;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Abrir o forno</h3>
+          <p style="color:var(--biscuit-dim); font-size:14px;">O momento de tensão antes de ver a cor final dos vidrados.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="logo" style="margin-bottom:14px;"><span class="ring"></span> Terra &amp; Fogo</div>
-        <p>Cerâmica de autor, torneada e vidrada à mão num atelier em Portugal.</p>
-      </div>
-      <div><h4>Loja</h4><ul><li><a href="loja.html">Todas as peças</a></li></ul></div>
-      <div><h4>Atelier</h4><ul><li><a href="workshops.html">Workshops</a></li><li><a href="videos.html">Vídeos</a></li><li><a href="noticias.html">Anúncios</a></li></ul></div>
-      <div><h4>Contacto</h4><ul><li><a href="contacto.html">Fale connosco</a></li><li><a href="mailto:ola@terraefogo.pt">ola@terraefogo.pt</a></li></ul></div>
-    </div>
     <div class="footer-bottom">
       <span>© <span data-year></span> Terra &amp; Fogo</span>
-      <span>Todas as peças são feitas à mão — pequenas variações fazem parte do processo.</span>
+      <span>Vídeos de demonstração — substituir por ficheiros próprios em <code>assets/</code>.</span>
     </div>
   </div>
 </footer>
 
-<script src="js/products.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/main.js"></script>
-<script>
-(async function () {
-  await loadProducts();
-
-  const CATS = { todas: "Todas", vasos: "Vasos", tacas: "Taças", canecas: "Canecas", pratos: "Pratos", cha: "Chá" };
-  const params = new URLSearchParams(location.search);
-  let activeCat = params.get("cat") || "todas";
-
-  function renderFilters() {
-    document.getElementById("filters").innerHTML = Object.entries(CATS).map(([key, label]) => `
-      <button class="filter-btn ${activeCat === key ? "active" : ""}" data-cat="${key}">${label}</button>
-    `).join("");
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        activeCat = btn.dataset.cat;
-        renderFilters();
-        renderGrid();
-      });
-    });
-  }
-
-  function renderGrid() {
-    const items = activeCat === "todas" ? PRODUCTS : PRODUCTS.filter(p => p.categoria === activeCat);
-    document.getElementById("shop-grid").innerHTML = items.map(p => `
-      <div class="card">
-        <a href="produto.html?id=${p.id}" class="card-media"><img src="${p.img}" alt="${p.nome}"></a>
-        <div class="card-body">
-          <a href="produto.html?id=${p.id}"><h3 class="card-title">${p.nome}</h3></a>
-          <div class="price-row">
-            <span class="price">${formatEUR(p.preco)}</span>
-            <button class="btn btn-outline" onclick="addToCart('${p.id}')">Adicionar</button>
-          </div>
-          <div class="spec-line"><span>${p.altura}</span><span>${p.diametro}</span><span>${p.vidrado}</span></div>
-        </div>
-      </div>
-    `).join("") || `<p style="color:var(--biscuit-dim);">Sem peças nesta categoria de momento.</p>`;
-  }
-
-  renderFilters();
-  renderGrid();
-})();
-</script>
 </body>
 </html>

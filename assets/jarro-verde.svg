@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <rect width="600" height="750" fill="#EAE0CB"/>
+  <g opacity="0.92">
+    <path d="M300,140 C250,140 260,190 270,220 L230,240 C190,260 180,320 190,400 C200,480 230,560 300,560 C370,560 400,480 410,400 C420,320 410,260 370,240 L330,220 C340,190 350,140 300,140 Z" fill="#4F6E52"/>
+  </g>
+  <text x="30" y="720" font-family="monospace" font-size="14" fill="#2B241B" opacity="0.4">jarro verde</text>
+</svg>
