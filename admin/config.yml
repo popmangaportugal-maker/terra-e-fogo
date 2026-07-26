@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: SEU-UTILIZADOR/SEU-REPOSITORIO   # <-- troca pelo teu utilizador/repositório do GitHub
+  repo: popmangaportugal-maker/terra-e-fogo
   branch: main
 
 media_folder: "assets/uploads"
