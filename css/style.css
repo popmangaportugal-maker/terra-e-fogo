@@ -65,8 +65,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; marg
 /* ---------- header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(244, 238, 225, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(244, 238, 225, 0.97);
   border-bottom: 1px solid var(--linha);
 }
 .site-header .wrap {
@@ -242,9 +241,11 @@ section { padding: 88px 0; }
   .two-col { grid-template-columns: 1fr; gap: 30px; }
 }
 @media (max-width: 640px) {
-  nav.main-nav { position: fixed; top: 76px; left: 0; right: 0; bottom: 0;
-    background: var(--tenmoku); flex-direction: column; padding: 30px 28px;
-    transform: translateX(100%); transition: transform 0.3s ease; gap: 24px; }
+  nav.main-nav { position: fixed; top: 76px; left: 0; right: 0; bottom: 0; z-index: 100;
+    background: var(--tenmoku); background-color: #F4EEE1; opacity: 1;
+    flex-direction: column; padding: 30px 28px;
+    transform: translateX(100%); transition: transform 0.3s ease; gap: 24px;
+    box-shadow: -8px 0 24px rgba(0,0,0,0.08); }
   nav.main-nav.open { transform: translateX(0); }
   .menu-toggle { display: block; }
   .grid { grid-template-columns: 1fr; }
