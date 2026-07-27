@@ -1,24 +1,240 @@
-// Catálogo de produtos — os dados vivem em content/products.json,
-// editável através do painel em /admin (CMS). Este ficheiro só
-// trata de carregar esses dados e disponibilizá-los ao resto do site.
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra & Fogo — Cerâmica de autor</title>
+<meta name="description" content="Peças de cerâmica torneadas e vidradas à mão, workshops de torno e vidragem, num atelier em Portugal.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-let PRODUCTS = [];
-let _productsLoaded = null;
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="ring"></span> Terra &amp; Fogo</a>
+    <nav class="main-nav">
+      <a href="loja.html">Loja</a>
+      <a href="workshops.html">Workshops</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="noticias.html">Anúncios</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <a href="carrinho.html" class="cart-link">Carrinho <span data-cart-count style="display:none">0</span></a>
+      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
 
-function loadProducts() {
-  if (!_productsLoaded) {
-    _productsLoaded = fetch("content/products.json")
-      .then(res => res.json())
-      .then(data => { PRODUCTS = data.items || []; return PRODUCTS; })
-      .catch(err => { console.error("Erro a carregar produtos:", err); PRODUCTS = []; return PRODUCTS; });
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Atelier — barro, roda, forno</span>
+      <h1>Peças que ainda<br>trazem a marca<br><em>do torno.</em></h1>
+      <p class="lede">Cerâmica utilitária torneada e vidrada à mão, uma peça de cada vez. Sem duas iguais — as variações do fogo fazem parte do desenho.</p>
+      <div class="hero-cta">
+        <a href="loja.html" class="btn btn-primary">Ver a loja</a>
+        <a href="workshops.html" class="btn btn-outline">Marcar um workshop</a>
+      </div>
+      <div style="max-width:420px; margin-top:34px; position:relative;">
+        <input type="text" id="site-search-input" autocomplete="off" placeholder="Pesquisar no site: peças, workshops, anúncios..."
+          style="width:100%; background:var(--tenmoku-2); border:1px solid var(--tenmoku-3); color:var(--biscuit);
+          padding:13px 16px 13px 42px; border-radius:3px; font-family:var(--sans); font-size:15px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="position:absolute; left:14px; top:24px; transform:translateY(-50%); color:var(--biscuit-dim); pointer-events:none;">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <div id="site-search-results"
+          style="display:none; position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30;
+          background:var(--tenmoku-2); border:1px solid var(--tenmoku-3); border-radius:3px;
+          max-height:360px; overflow-y:auto; box-shadow:0 12px 24px rgba(0,0,0,0.12);"></div>
+      </div>
+    </div>
+    <div class="wheel" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="180" fill="none" stroke="#D9C8A9" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="#D9C8A9" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="#4F6E52" stroke-width="1" opacity="0.6"/>
+        <circle cx="200" cy="200" r="60" fill="none" stroke="#A5472A" stroke-width="1.5"/>
+        <circle cx="200" cy="200" r="6" fill="#2B241B"/>
+        <line x1="200" y1="20" x2="200" y2="60" stroke="#A5472A" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Peças em destaque</span>
+        <h2>Da roda para a mesa</h2>
+      </div>
+      <a href="loja.html" class="btn btn-outline">Ver todas as peças</a>
+    </div>
+    <div class="grid" id="featured-grid"></div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--linha); border-bottom:1px solid var(--linha);">
+  <div class="wrap two-col">
+    <div>
+      <img src="assets/video-apresentacao.svg" alt="Vídeo de apresentação do atelier" style="border-radius:3px;">
+    </div>
+    <div>
+      <span class="eyebrow">Conhecer o atelier</span>
+      <h2 style="margin:14px 0 18px; font-size:32px;">Do bloco de barro à peça acabada</h2>
+      <p class="lede">Um vídeo curto sobre como trabalhamos — da centragem do barro no torno à última demão de vidrado antes da cozedura.</p>
+      <a href="videos.html" class="btn btn-outline" style="margin-top:24px;">Ver todos os vídeos</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Aprender</span>
+        <h2>Workshops no atelier</h2>
+      </div>
+      <a href="workshops.html" class="btn btn-outline">Ver todos</a>
+    </div>
+    <div class="grid" id="workshops-preview"></div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--linha);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Últimas novidades</span>
+        <h2>Anúncios</h2>
+      </div>
+      <a href="noticias.html" class="btn btn-outline">Ver todos</a>
+    </div>
+    <div id="news-preview"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px;"><span class="ring"></span> Terra &amp; Fogo</div>
+        <p>Cerâmica de autor, torneada e vidrada à mão num atelier em Portugal.</p>
+      </div>
+      <div><h4>Loja</h4><ul><li><a href="loja.html">Todas as peças</a></li><li><a href="loja.html">Vasos</a></li><li><a href="loja.html">Chá</a></li></ul></div>
+      <div><h4>Atelier</h4><ul><li><a href="workshops.html">Workshops</a></li><li><a href="videos.html">Vídeos</a></li><li><a href="noticias.html">Anúncios</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="contacto.html">Fale connosco</a></li><li><a href="mailto:ola@terraefogo.pt">ola@terraefogo.pt</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Terra &amp; Fogo</span>
+      <span>Todas as peças são feitas à mão — pequenas variações fazem parte do processo.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+(async function () {
+  await loadProducts();
+
+  const featured = PRODUCTS.slice(0, 3);
+  document.getElementById("featured-grid").innerHTML = featured.map(p => `
+    <div class="card">
+      <a href="produto.html?id=${p.id}" class="card-media"><img src="${p.img}" alt="${p.nome}"></a>
+      <div class="card-body">
+        <a href="produto.html?id=${p.id}"><h3 class="card-title">${p.nome}</h3></a>
+        <div class="price-row">
+          <span class="price">${formatEUR(p.preco)}</span>
+          <button class="btn btn-outline" onclick="addToCart('${p.id}')">Adicionar</button>
+        </div>
+        <div class="spec-line"><span>${p.altura}</span><span>${p.vidrado}</span></div>
+      </div>
+    </div>
+  `).join("");
+
+  const wsRes = await fetch("content/workshops.json");
+  const WORKSHOPS = (await wsRes.json()).items;
+  document.getElementById("workshops-preview").innerHTML = WORKSHOPS.slice(0, 3).map(w => `
+    <div class="card">
+      <div class="card-media"><img src="${w.img}" alt="${w.nome}"></div>
+      <div class="card-body">
+        <h3 class="card-title">${w.nome}</h3>
+        <p style="color:var(--biscuit-dim); font-size:14px; margin:0;">${w.desc}</p>
+        <div class="price-row"><span class="price">${w.preco}</span><a href="workshops.html" class="btn btn-outline">Ver detalhes</a></div>
+      </div>
+    </div>
+  `).join("");
+
+  const newsRes = await fetch("content/noticias.json");
+  const NEWS = (await newsRes.json()).items;
+  document.getElementById("news-preview").innerHTML = `
+    <div class="grid" style="grid-template-columns: repeat(2,1fr);">
+      ${NEWS.slice(0, 2).map(n => `
+        <div class="card"><div class="card-body">
+          <span class="pill">${n.pill}</span>
+          <h3 class="card-title" style="margin-top:10px;">${n.titulo}</h3>
+          <p style="color:var(--biscuit-dim); font-size:14px;">${n.texto}</p>
+        </div></div>
+      `).join("")}
+    </div>
+  `;
+
+  // --- Pesquisa global (produtos, workshops, anúncios) ---
+  const searchInput = document.getElementById("site-search-input");
+  const resultsBox = document.getElementById("site-search-results");
+
+  function norm(s) { return (s || "").toString().toLowerCase(); }
+
+  function runSearch(term) {
+    const t = norm(term).trim();
+    if (!t) { resultsBox.style.display = "none"; resultsBox.innerHTML = ""; return; }
+
+    const prodMatches = PRODUCTS.filter(p =>
+      [p.nome, p.categoria, p.vidrado, p.descricao].some(f => norm(f).includes(t))
+    ).slice(0, 5).map(p => ({
+      tipo: "Peça", titulo: p.nome, sub: formatEUR(p.preco), href: `produto.html?id=${p.id}`
+    }));
+
+    const wsMatches = WORKSHOPS.filter(w =>
+      [w.nome, w.desc].some(f => norm(f).includes(t))
+    ).slice(0, 5).map(w => ({
+      tipo: "Workshop", titulo: w.nome, sub: w.preco, href: "workshops.html"
+    }));
+
+    const newsMatches = NEWS.filter(n =>
+      [n.titulo, n.texto, n.pill].some(f => norm(f).includes(t))
+    ).slice(0, 5).map(n => ({
+      tipo: "Anúncio", titulo: n.titulo, sub: n.data, href: "noticias.html"
+    }));
+
+    const all = [...prodMatches, ...wsMatches, ...newsMatches];
+
+    if (all.length === 0) {
+      resultsBox.innerHTML = `<div style="padding:16px; color:var(--biscuit-dim); font-size:14px;">Sem resultados para "${term}".</div>`;
+    } else {
+      resultsBox.innerHTML = all.map(r => `
+        <a href="${r.href}" style="display:flex; justify-content:space-between; gap:12px; padding:12px 16px;
+          border-bottom:1px solid var(--linha); font-size:14px;">
+          <span><span class="pill" style="margin-right:8px;">${r.tipo}</span>${r.titulo}</span>
+          <span style="color:var(--biscuit-dim); font-family:var(--mono); font-size:12px; white-space:nowrap;">${r.sub}</span>
+        </a>
+      `).join("");
+    }
+    resultsBox.style.display = "block";
   }
-  return _productsLoaded;
-}
 
-function formatEUR(v) {
-  return v.toLocaleString("pt-PT", { style: "currency", currency: "EUR" });
-}
-
-function getProduct(id) {
-  return PRODUCTS.find(p => p.id === id);
-}
+  searchInput.addEventListener("input", (e) => runSearch(e.target.value));
+  searchInput.addEventListener("focus", (e) => { if (e.target.value) runSearch(e.target.value); });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#site-search-input") && !e.target.closest("#site-search-results")) {
+      resultsBox.style.display = "none";
+    }
+  });
+})();
+</script>
+</body>
+</html>
