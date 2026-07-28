@@ -73,17 +73,15 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; marg
   height: 76px;
 }
 .logo {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
   display: flex; align-items: center; gap: 10px;
 }
-.logo .ring {
-  width: 20px; height: 20px; border-radius: 50%;
-  border: 2px solid var(--oxido);
-  border-top-color: transparent;
-  transform: rotate(35deg);
+.logo img {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+.site-footer .logo img {
+  height: 38px;
 }
 nav.main-nav { display: flex; gap: 32px; }
 nav.main-nav a {
