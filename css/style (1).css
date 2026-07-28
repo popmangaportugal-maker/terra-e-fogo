@@ -1,0 +1,252 @@
+/* =========================================================
+   TERRA & FOGO — sistema de design
+   Paleta inspirada em vidrados de forno a lenha (tenmoku,
+   celadão, óxido de ferro) em vez dos defaults habituais.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+:root {
+  /* cor — porcelana e vidrados, em tons claros */
+  --tenmoku:        #F4EEE1;   /* fundo — porcelana em cru */
+  --tenmoku-2:      #EAE0CB;   /* painel — ligeiramente mais escuro */
+  --tenmoku-3:      #D9C8A9;   /* linha / borda */
+  --biscuit:        #2B241B;   /* texto principal — barro queimado */
+  --biscuit-dim:    #6E6252;   /* texto secundário */
+  --celadao:        #4F6E52;   /* verde celadão — acento primário */
+  --celadao-dim:    #3C5540;
+  --oxido:          #A5472A;   /* óxido de ferro — acento quente */
+  --oxido-dim:      #82361F;
+  --paper:          #FBF7EE;   /* texto claro sobre fundos escuros/acento */
+  --linha:          rgba(43, 36, 27, 0.14);
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Work Sans', -apple-system, sans-serif;
+  --mono: 'Instrument Sans', -apple-system, sans-serif;
+
+  --radius: 3px;
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--tenmoku);
+  color: var(--biscuit);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+.wrap { max-width: var(--container); margin: 0 auto; padding: 0 28px; }
+
+/* ---------- tipografia ---------- */
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; margin: 0; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--celadao);
+}
+.lede { font-size: 19px; color: var(--biscuit-dim); max-width: 46ch; }
+
+/* ---------- header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(244, 238, 225, 0.97);
+  border-bottom: 1px solid var(--linha);
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 94px;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+.site-footer .logo img {
+  height: 56px;
+}
+nav.main-nav { display: flex; gap: 32px; }
+nav.main-nav a {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--biscuit-dim);
+  transition: color 0.2s;
+  position: relative;
+}
+nav.main-nav a:hover, nav.main-nav a.active { color: var(--biscuit); }
+nav.main-nav a.active::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -26px;
+  height: 2px; background: var(--oxido);
+}
+.header-actions { display: flex; align-items: center; gap: 18px; }
+.cart-link {
+  font-family: var(--mono); font-size: 13px;
+  display: flex; align-items: center; gap: 6px;
+  border: 1px solid var(--tenmoku-3);
+  padding: 8px 14px; border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+.cart-link:hover { border-color: var(--celadao); }
+.menu-toggle { display: none; background: none; border: none; color: var(--biscuit); }
+
+/* ---------- botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 13px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.2s, border-color 0.2s;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--oxido); color: var(--paper); }
+.btn-primary:hover { background: var(--oxido-dim); }
+.btn-outline { border-color: var(--tenmoku-3); color: var(--biscuit); }
+.btn-outline:hover { border-color: var(--celadao); color: var(--celadao); }
+.btn-block { width: 100%; justify-content: center; }
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  padding: 110px 0 90px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--linha);
+}
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+.hero h1 { font-size: clamp(40px, 5.2vw, 68px); margin: 18px 0 22px; }
+.hero h1 em { font-style: italic; color: var(--celadao); }
+.hero-cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+.wheel {
+  position: relative; width: 100%; aspect-ratio: 1; max-width: 420px; margin: 0 auto;
+}
+.wheel svg { width: 100%; height: 100%; animation: spin 34s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- secções ---------- */
+section { padding: 88px 0; }
+.section-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 44px; gap: 24px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--linha); padding-bottom: 24px;
+}
+.section-head h2 { font-size: clamp(28px, 3.4vw, 40px); margin-top: 10px; }
+.ring-divider {
+  display: flex; align-items: center; gap: 14px; margin: 6px 0 30px;
+  color: var(--biscuit-dim); font-family: var(--mono); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+.ring-divider::before, .ring-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--linha);
+}
+
+/* ---------- grelha de produtos ---------- */
+.grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+}
+.card {
+  background: var(--tenmoku-2);
+  border: 1px solid var(--tenmoku-3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+  display: flex; flex-direction: column;
+}
+.card:hover { border-color: var(--celadao-dim); transform: translateY(-3px); }
+.card-media { aspect-ratio: 4/5; background: var(--tenmoku-3); overflow: hidden; }
+.card-media img { width: 100%; height: 100%; object-fit: cover; }
+.card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card-title { font-family: var(--serif); font-size: 20px; }
+.spec-line {
+  font-family: var(--mono); font-size: 11.5px; color: var(--biscuit-dim);
+  letter-spacing: 0.03em; display: flex; flex-wrap: wrap; gap: 4px;
+  border-top: 1px dashed var(--linha); padding-top: 10px; margin-top: auto;
+}
+.spec-line span:not(:last-child)::after { content: ' · '; }
+.price-row { display: flex; justify-content: space-between; align-items: center; }
+.price { font-family: var(--mono); font-size: 16px; color: var(--celadao); }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.filter-btn {
+  font-family: var(--mono); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.04em; padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--tenmoku-3); color: var(--biscuit-dim);
+  background: transparent; transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--celadao); color: var(--biscuit); }
+.filter-btn.active { background: var(--celadao); border-color: var(--celadao); color: var(--paper); }
+
+/* ---------- rodapé ---------- */
+.site-footer { border-top: 1px solid var(--linha); padding: 60px 0 36px; margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+.footer-grid h4 {
+  font-family: var(--mono); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--biscuit-dim); margin-bottom: 16px;
+}
+.footer-grid a, .footer-grid p { font-size: 14px; color: var(--biscuit-dim); }
+.footer-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer-grid a:hover { color: var(--biscuit); }
+.footer-bottom {
+  margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--linha);
+  display: flex; justify-content: space-between; font-family: var(--mono);
+  font-size: 12px; color: var(--biscuit-dim); flex-wrap: wrap; gap: 10px;
+}
+
+/* ---------- toast carrinho ---------- */
+.toast {
+  position: fixed; bottom: 26px; right: 26px; z-index: 200;
+  background: var(--celadao); color: var(--paper);
+  font-family: var(--mono); font-size: 13px;
+  padding: 14px 20px; border-radius: var(--radius);
+  transform: translateY(120%); opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ---------- utilitários ---------- */
+.pill { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 5px 10px; border-radius: 999px; border: 1px solid var(--tenmoku-3); color: var(--biscuit-dim); }
+.center { text-align: center; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.mt-0 { margin-top: 0; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .wheel { max-width: 280px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 640px) {
+  nav.main-nav { position: fixed; top: 94px; left: 0; right: 0; bottom: 0; z-index: 100;
+    background: var(--tenmoku); background-color: #F4EEE1; opacity: 1;
+    flex-direction: column; padding: 30px 28px;
+    transform: translateX(100%); transition: transform 0.3s ease; gap: 24px;
+    box-shadow: -8px 0 24px rgba(0,0,0,0.08); }
+  nav.main-nav.open { transform: translateX(0); }
+  .menu-toggle { display: block; }
+  .grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  section { padding: 60px 0; }
+}
